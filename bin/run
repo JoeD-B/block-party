@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby bin/
+
 require_relative('../config/environment')
 
-CLI.new
+Cli.new.welcome
