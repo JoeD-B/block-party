@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby bin/
+
 
 require_relative('../config/environment')
 

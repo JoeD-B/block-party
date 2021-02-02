@@ -1,6 +1,6 @@
 require 'pry'
-require 'nokogiri'
+require 'httparty'
 
-require_relative('../lib/Scraper')
-require_relative('../lib/Cli')
-require_relative('../lib/Sites')
+require_relative('../lib/cli')
+require_relative('../lib/etherscan')
+require_relative('../lib/addresses')
