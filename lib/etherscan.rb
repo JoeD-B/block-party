@@ -4,12 +4,22 @@ class Etherscan
 
     @@api_key = "CD7JVPJE3PK97QDU7EW9KCDX7C8YHKGGF1"
 
-    @@url = ["https://api.etherscan.io/api?module=stats&action=ethprice&apikey=#{@@api_key}","https://api.etherscan.io/api?module=account&action=balance&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&tag=latest&apikey=#{@@api_key}"]
+    @@url = ["https://api.etherscan.io/api?module=stats&action=ethprice&apikey=#{@@api_key}"]
+
+    
+
+    def self.get_address(wallet)
+        url = "https://api.etherscan.io/api?module=account&action=balance&address=#{wallet}&tag=latest&apikey=#{@@api_key}"
+        response = HTTParty.get(url)
+        address_hash = {address: response["result"]}
+        Addresses.new(address_hash)
+    end
 
     def self.eth_price
         response = HTTParty.get(@@url[0])
-        binding.pry 
-       
+        ethereum_hash = {eth_usd: response["result"]["ethusd"],eth_btc: response["result"]["ethbtc"]}
+        
+        Addresses.new(ethereum_hash)
     end
     #def self.address_balance
 
