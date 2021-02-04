@@ -5,9 +5,9 @@ class Cli
         @user=''
     end
     def welcome
-        puts "welcome to block party"
+        puts "Welcome to BLOCK PARTY"
         sleep(1)
-        puts "BLock Party gives you quick access to your ethereum wallet balance as well as the latest ether prices!"
+        puts "Using any ethereum wallet you can gain access to your balance, latest ether prices, and more!"
         sleep(1) 
         ask_name
         system("clear")
@@ -67,9 +67,11 @@ class Cli
     end
     
     def display_balance(address)
-       
-        puts "#{@user}'s wallet Amount: #{address.address.to_f}"
-       
+        if @user == ''
+            puts "Wallet Amount: #{address.address.to_f}"
+        else
+            puts "#{@user}'s Wallet Amount: #{address.address.to_f}"
+        end
     end
     def main_options
         puts "Main Menu"
@@ -110,7 +112,7 @@ class Cli
             price_check
         elsif input == "2"
             puts "$ #{prices.eth_usd.to_f}"
-            price_check3
+            price_check
         elsif input == "3"
             self.main_options
 
@@ -127,8 +129,8 @@ class Cli
         
     end
     def gas_options(gas)
-        puts "the average gas price is #{gas.gas} Gwei"
-        puts "enter anything to return to the main menu"
+        puts "The average gas price is #{gas.gas} Gwei"
+        puts "Enter anything to return to the main menu"
         input = gets.strip
         if input
             self.main_options
