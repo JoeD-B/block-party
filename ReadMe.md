@@ -1,7 +1,10 @@
-# TO DO
-1. get call for gas price 
-2. get call for coin market cap
-3. figure out the object issue in addresses(add a class for eth price?)
-4. change wallet feature
-5. exit
+Welcome to Block Party!!!!!
+
+Block Party is an application to connect you with the latest Ethereum prices in a Usd or Btc. If you're looking to make some trades, it also allows you to check the average gas price in Gwei. To get access to the app you must simply enter a valid Ether wallet address.
+
+Instructions for Install: clone the repository (https://github.com/Joeisevil/block-party). Navigate to the directory and run ```bundle install```then run ```ruby bin/run```.
+
+
+
+
 
