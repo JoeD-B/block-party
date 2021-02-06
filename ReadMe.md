@@ -4,7 +4,7 @@ Block Party is an application to connect you with the latest Ethereum prices in 
 
 Instructions for Install: clone the repository (https://github.com/Joeisevil/block-party). Navigate to the directory and run ```bundle install```then run ```ruby bin/run```.
 
-
+This project is licensed under the CC0 1.0 Universal Creative Commons License.
 
 
 

@@ -13,7 +13,6 @@ class Cli
         system("clear")
         self.ask_for_address
         self.main_options
-        #self.price_check
     end
     def ask_name
         puts "what is your name?"
@@ -21,39 +20,12 @@ class Cli
         @user << input
         system("clear")
     end
-    #gas price check
-
+    
     def ask_for_address
-        #new_address=false
-
-        
         puts "Please enter a valid Eth Wallet Address to enter the program"
         input = gets.strip
-        #error handling for non accessible address
         new_address = Etherscan.get_address(input)
-        self.valid_address?(new_address)
-        #binding.pry
-        #if new_address.address.include? "Error! Invalid address format" || new_address.address.length != 42
-        #    puts "Error! Invalid address format"
-        #    ask_for_address
-        
-        #else
-        #    self.display_balance(address)
-        #end
-        #while !new_address
-        #    puts "Please enter a valid Eth Wallet Address to enter the program"
-        #    input = gets.strip
-        #    new_address = Etherscan.get_address(input)
-        #    
-        #    if  new_address.address.include? "Error! Invalid address format" || new_address.address.length != 42
-        #        puts "Error! Invalid address format"
-        #    end
-        #end
-        
-        
-        
-        
-       
+        self.valid_address?(new_address)  
     end
     def valid_address?(address)
         if address.address.include? "Error! Invalid address format"
@@ -65,7 +37,6 @@ class Cli
         end
         
     end
-    
     def display_balance(address)
         if @user == ''
             puts "Wallet Amount: #{address.address.to_f}"
@@ -73,6 +44,7 @@ class Cli
             puts "#{@user}'s Wallet Amount: #{address.address.to_f}"
         end
     end
+    
     def main_options
         puts "Main Menu"
         puts "Enter a number for the corresponding selection"
@@ -89,9 +61,10 @@ class Cli
         elsif input == "2"
             gas_price
         elsif input == "3"
-            puts "#{@user}'s wallet Amount: #{@gas}"
+            exit
         end
     end
+    
     def price_check    
         new_price = Etherscan.eth_price
         self.price_options(new_price)
@@ -104,7 +77,6 @@ class Cli
         puts "3. Back"
         self.price_selection(num)
     end
-
     def price_selection(prices)
         input = gets.strip
         if input == "1"
@@ -120,9 +92,8 @@ class Cli
             puts "^that^selection^was^invalid"
             self.price_options(prices)
         end
-        
-       
     end
+    
     def gas_price
         gas = Etherscan.get_gas
         self.gas_options(gas)
@@ -140,7 +111,5 @@ class Cli
 
     def exit
         abort("Party on, Blockhead!")
-      end
-
-
+    end
 end
