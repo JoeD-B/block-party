@@ -1,8 +1,9 @@
 class Cli
-    attr_accessor :user
+    attr_accessor :user, :address
     
     def initialize
         @user=''
+        @address=''
     end
     def welcome
         puts "Welcome to BLOCK PARTY"
@@ -33,16 +34,18 @@ class Cli
             ask_for_address
         
         else
-            self.display_balance(address)
+            @address = address.address.to_f
+            self.display_balance
         end
         
     end
-    def display_balance(address)
+    def display_balance
         if @user == ''
-            puts "Wallet Amount: #{address.address.to_f}"
+            puts "Wallet Amount: #{@address}"
         else
-            puts "#{@user}'s Wallet Amount: #{address.address.to_f}"
+            puts "#{@user}'s Wallet Amount: #{@address}"
         end
+        
     end
     
     def main_options
@@ -50,7 +53,8 @@ class Cli
         puts "Enter a number for the corresponding selection"
         puts "1. Ethereum Price"
         puts "2. Gas Price"
-        puts "3. Exit"
+        puts "3. Dispay Balance"
+        puts "4. Exit"
         
         main_selection
     end
@@ -61,6 +65,9 @@ class Cli
         elsif input == "2"
             gas_price
         elsif input == "3"
+            puts @address
+            main_options
+        elsif input == "4"
             exit
         end
     end
