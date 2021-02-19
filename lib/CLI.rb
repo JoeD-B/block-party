@@ -6,7 +6,8 @@ class Cli
         @address=''
     end
     def welcome
-        puts "Welcome to BLOCK PARTY"
+        font = TTY::Font.new(:block)
+        puts font.write('block party')
         sleep(1)
         puts "Using any ethereum wallet you can gain access to your balance, latest ether prices, and more!"
         sleep(1) 
@@ -115,7 +116,7 @@ class Cli
         end
         system("clear")
     end
-
+   
     def exit
         abort("Party on, Blockhead!")
     end

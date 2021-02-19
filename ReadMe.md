@@ -10,3 +10,6 @@ This project is licensed under the CC0 1.0 Universal Creative Commons License.
 
 
 
+TO DO 
+
+1. Hide API key in .env file
